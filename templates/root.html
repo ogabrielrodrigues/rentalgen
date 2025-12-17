@@ -1,0 +1,21 @@
+{{define "root"}}
+<html>
+	<head>
+		<script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+		<style type="text/tailwindcss">
+			@theme {
+				--font-sans: "Aptos";
+			}
+		</style>
+	</head>
+
+	<body>
+		{{range .Contracts}}
+		<div class="min-h-screen max-h-[400vh]">
+			{{ template "voucher" .}} {{ template "bordereau" .}} {{ template
+			"bordereau" .}} {{ template "voucher" .}}
+		</div>
+		{{end}}
+	</body>
+</html>
+{{end}}
