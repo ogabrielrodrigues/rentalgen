@@ -9,9 +9,9 @@
 		</style>
 	</head>
 
-	<body>
-		{{range .Contracts}}
-		<div class="min-h-screen max-h-[400vh]">
+	<body class="bg-zinc-400 w-screen overflow-x-hidden">
+		{{range .Rentals}}
+		<div class="min-h-screen w-screen max-h-[400vh]">
 			{{ template "voucher" .}} {{ template "bordereau" .}} {{ template
 			"bordereau" .}} {{ template "voucher" .}}
 		</div>

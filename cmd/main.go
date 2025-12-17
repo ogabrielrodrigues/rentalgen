@@ -24,7 +24,7 @@ func main() {
 
 	mux.HandleFunc("GET /", func(w http.ResponseWriter, r *http.Request) {
 		tmpl, _ := template.ParseFiles(
-			filepath.Join("templates", "root.tmpl"),
+			filepath.Join("templates", "root.html"),
 			filepath.Join("templates", "voucher.html"),
 			filepath.Join("templates", "bordereau.html"),
 		)
