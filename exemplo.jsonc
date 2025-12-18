@@ -1,0 +1,49 @@
+{
+	"referenceDate": {
+		"month": "Dezembro", // Mês de referência
+		"year": "2025", // Ano de referência
+	},
+	"expirationDate": {
+		"month": "Janeiro", // Mês de vencimento
+		"year": "2026", // Ano de referência
+	},
+	"rentals": [
+		{
+			// Dados do Proprietário
+			"owner": {
+				"fullname": "",
+				"nationality": "",
+				"maritalStatus": "",
+				"occupation": "",
+				"rg": "",
+				"cpf": "",
+				"address": "",
+			},
+			// Dados dos inquilinos
+			"tenants": [
+				{
+					"fullname": "",
+					"nationality": "",
+					"maritalStatus": "",
+					"occupation": "",
+					"rg": "",
+					"cpf": "",
+					"address": "",
+				},
+			],
+			"guarantee": "Depósito caução no valor de 03 (três) alugueres, totalizando R$ 0,00 (... reais)",
+			"city": "", // Cidade de recebimento
+			"propertyAddress": "",
+			"kind": "residencial", // residencial, comercial, etc...
+			"amount": "500,00", // valor do aluguel pago
+			"longAmount": "quinhentos reais", // valor do aluguel pago (por extenso)
+			"amountWithoutTax": "459,00", // valor do aluguel deduzida a comissão
+			"dueDay": "01", // dia do pagamento dos alugueres
+			"signedIn": "01/02/2024", // data da assinatura
+			"extendedIn": "01/02/2025", // data do último aditamento
+			"expiresIn": "01/02/2026", // data de vencimento
+			// "voucherObservation": "", // Observação do Recibo
+			// "bordereauObservation": "", // Observação do Borderô
+		},
+	],
+}
