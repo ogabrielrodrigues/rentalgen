@@ -1,5 +1,5 @@
 {{define "bordereau"}}
-<main class="flex flex-col items-center w-screen h-screen p-8 text-md">
+<main class="flex flex-col items-center w-screen h-screen px-8 text-md">
 	<header class="flex flex-col items-center gap-4">
 		<h1 class="font-bold uppercase">recibo borderô</h1>
 		<span class="italic">{{.PropertyAddress}}</span>
@@ -83,9 +83,11 @@
 			<p>TOTAL DE: R$ {{.Amount}} (-) 10% = R$ {{.AmountWithoutTax}}</p>
 		</div>
 
+		{{if ne .BordereauObservation ""}}
 		<div class="mt-4 italic">
 			<span><strong>OBS: </strong>{{.BordereauObservation}}.</span>
 		</div>
+		{{end}}
 	</section>
 
 	<footer class="flex flex-col items-center mt-6">
@@ -93,7 +95,7 @@
 			{{.City}}/SP, {{.DueDay}} de {{.ExpirationMonth}} de {{.ExpirationYear}}.
 		</p>
 
-		<div class="border-b max-w-sm w-full mx-auto mt-16"></div>
+		<div class="border-b max-w-sm w-full mx-auto mt-8"></div>
 
 		<strong class="uppercase">{{.Owner.Fullname}}</strong>
 		<p class="uppercase italic text-sm">locador</p>

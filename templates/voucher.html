@@ -30,9 +30,11 @@
 			<strong class="italic">{{.PropertyAddress}}.</strong></span
 		>
 
+		{{if ne .VoucherObservation ""}}
 		<div class="mt-4 italic">
 			<span><strong>OBS: </strong>{{.VoucherObservation}}.</span>
 		</div>
+		{{end}}
 	</section>
 
 	<footer class="text-center">
