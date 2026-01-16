@@ -21,6 +21,7 @@ Linux:
 
 ### 3. Execute o binário
 Ao executar o binário, você precisa indicar um arquivo `.json`. Use como exemplo o arquivo `exemplo.jsonc` que está no projeto.
+
 Windows:
 ```sh
 	.\rentalgen -file .\alugueis.json # exemplo de arquivo
