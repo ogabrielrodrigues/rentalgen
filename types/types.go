@@ -34,10 +34,10 @@ type Person struct {
 }
 
 func (p *Person) GenerateQualification() string {
-	genderStr := "%s, %s, %s, portador da Carteira da Cédula de Identidade RG n.° %s, inscrito no CPF sob o n.° %s, residente e domiciliado a %s"
+	genderStr := "%s, %s, %s, portador da cédula de identidade RG n.° %s, inscrito no CPF sob o n.° %s, residente e domiciliado a %s"
 
 	if p.Nationality == "brasileira" {
-		genderStr = "%s, %s, %s, portadora da Cédula de Identidade RG n.° %s, inscrita no CPF sob o n.° %s, residente e domiciliada a %s"
+		genderStr = "%s, %s, %s, portadora da cédula de identidade RG n.º %s, inscrita no CPF sob o n.° %s, residente e domiciliada a %s"
 	}
 
 	return fmt.Sprintf(genderStr, strings.ToLower(p.Nationality), strings.ToLower(p.MaritalStatus), strings.ToLower(p.Occupation), p.Rg, p.Cpf, p.Address)
