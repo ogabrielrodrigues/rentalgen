@@ -1,21 +1,21 @@
 {{define "root"}}
 <html>
-	<head>
-		<script src="https://unpkg.com/@tailwindcss/browser@4"></script>
-		<style type="text/tailwindcss">
-			@theme {
-				--font-sans: "Aptos";
-			}
-		</style>
-	</head>
+  <head>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+      @theme {
+        --font-sans: "Aptos Narrow", "Aptos", "Segoe UI", sans-serif;
+      }
+    </style>
+  </head>
 
-	<body class="w-screen overflow-x-hidden">
-		{{range .Rentals}}
-		<div class="min-h-screen w-screen max-h-[400vh]">
-			{{ template "voucher" .}} {{ template "bordereau" .}} {{ template
-			"bordereau" .}} {{ template "voucher" .}}
-		</div>
-		{{end}}
-	</body>
+  <body class="w-screen overflow-x-hidden">
+    {{range .Rentals}}
+    <div class="min-h-screen w-screen max-h-[400vh]">
+      {{ template "voucher" .}} {{ template "bordereau" .}} {{ template
+      "bordereau" .}} {{ template "voucher" .}}
+    </div>
+    {{end}}
+  </body>
 </html>
 {{end}}
