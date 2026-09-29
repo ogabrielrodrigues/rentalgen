@@ -12,8 +12,12 @@
   <body class="w-screen overflow-x-hidden">
     {{range .Rentals}}
     <div class="min-h-screen w-screen max-h-[400vh]">
-      {{ template "voucher" .}} {{ template "bordereau" .}} {{ template
-      "bordereau" .}} {{ template "voucher" .}}
+      {{if eq .OnlyVoucher nil}}
+        {{ template "voucher" .}} {{ template "bordereau" .}}
+        {{ template "bordereau" .}} {{ template "voucher" .}}
+      {{else}}
+        {{ template "voucher" .}} {{ template "voucher" .}}
+      {{end}}
     </div>
     {{end}}
   </body>
