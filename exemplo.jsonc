@@ -44,7 +44,8 @@
       "expiresIn": "01/02/2026", // data de vencimento
       // "voucherObservation": "", // Observação do Recibo (OPCIONAL)
       // "bordereauObservation": "", // Observação do Borderô (OPCIONAL)
-      // "onlyVoucher": true // Gerar somente Recibo (OPCIONAL - Padrão 'false')
+      // "onlyVoucher": true // Gerar somente Recibo (OPCIONAL - auto 'false')
+      // "skip": true // Pular nessa geração (OPCIONAL - auto 'false')
     },
   ],
 }

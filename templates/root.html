@@ -11,14 +11,16 @@
 
   <body class="w-screen overflow-x-hidden">
     {{range .Rentals}}
-    <div class="min-h-screen w-screen max-h-[400vh]">
-      {{if eq .OnlyVoucher nil}}
-        {{ template "voucher" .}} {{ template "bordereau" .}}
-        {{ template "bordereau" .}} {{ template "voucher" .}}
-      {{else}}
-        {{ template "voucher" .}} {{ template "voucher" .}}
+      {{if eq .Skip nil}}
+        <div class="min-h-screen w-screen max-h-[400vh]">
+          {{if eq .OnlyVoucher nil}}
+            {{template "voucher" .}} {{template "bordereau" .}}
+            {{template "bordereau" .}} {{template "voucher" .}}
+          {{else}}
+            {{template "voucher" .}} {{template "voucher" .}}
+          {{end}}
+        </div>
       {{end}}
-    </div>
     {{end}}
   </body>
 </html>

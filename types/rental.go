@@ -22,4 +22,5 @@ type Rental struct {
 	VoucherObservation   string    `json:"voucherObservation,omitempty"`
 	BordereauObservation string    `json:"bordereauObservation,omitempty"`
 	OnlyVoucher          *bool     `json:"onlyVoucher"`
+	Skip                 *bool     `json:"skip"`
 }
