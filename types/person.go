@@ -8,23 +8,22 @@ import (
 type Person struct {
 	Fullname      string `json:"fullname"`
 	Nationality   string `json:"nationality"`
-	Denomination  string `json:"denomination,omitempty"`
 	MaritalStatus string `json:"maritalStatus"`
 	Occupation    string `json:"occupation"`
 	Rg            string `json:"rg"`
 	Cpf           string `json:"cpf"`
 	Address       string `json:"address"`
-	Qualification string
+	Qualification string `json:"-"`
 }
 
 func (p *Person) GenerateQualification() string {
 	genderStr := `
-  %s, %s, %s, portador da cédula de identidade RG n.° %s, inscrito no CPF sob o n.° %s,
+  %s, %s, %s, portador da cédula de identidade RG n.º %s, inscrito no CPF sob o n.º %s,
   residente e domiciliado a %s`
 
 	if p.Nationality == "brasileira" {
 		genderStr = `
-		%s, %s, %s, portadora da cédula de identidade RG n.º %s, inscrita no CPF sob o n.° %s,
+		%s, %s, %s, portadora da cédula de identidade RG n.º %s, inscrita no CPF sob o n.º %s,
 		residente e domiciliada a %s`
 	}
 

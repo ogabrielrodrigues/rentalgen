@@ -1,0 +1,56 @@
+{
+  "referenceDate": {
+    "month": "Dezembro",
+    "year": "2025"
+  },
+  "expirationDate": {
+    "month": "Janeiro",
+    "year": "2026"
+  },
+  "rentals": [
+    {
+      "owner": {
+        "fullname": "Maria Exemplo",
+        "nationality": "brasileira",
+        "maritalStatus": "solteira",
+        "occupation": "professora",
+        "rg": "00.000.000-0",
+        "cpf": "000.000.000-00",
+        "address": "Rua das Flores, 100, Centro, Campinas/SP"
+      },
+      "tenants": [
+        {
+          "fullname": "João Exemplo",
+          "nationality": "brasileiro",
+          "maritalStatus": "casado",
+          "occupation": "contador",
+          "rg": "11.111.111-1",
+          "cpf": "111.111.111-11",
+          "address": "Rua dos Ipês, 200, Centro, Campinas/SP"
+        }
+      ],
+      "guarantors": [
+        {
+          "fullname": "Pedro Exemplo",
+          "nationality": "brasileiro",
+          "maritalStatus": "solteiro",
+          "occupation": "engenheiro",
+          "rg": "22.222.222-2",
+          "cpf": "222.222.222-22",
+          "address": "Rua das Acácias, 300, Centro, Campinas/SP"
+        }
+      ],
+      "guarantee": "Fiança",
+      "city": "Campinas",
+      "propertyAddress": "Rua dos Ipês, 200, Centro, Campinas/SP",
+      "kind": "residencial",
+      "amount": "500,00",
+      "longAmount": "quinhentos reais",
+      "amountWithoutTax": "450,00",
+      "dueDay": "01",
+      "signedIn": "01/02/2024",
+      "extendedIn": "01/02/2025",
+      "expiresIn": "01/02/2026"
+    }
+  ]
+}

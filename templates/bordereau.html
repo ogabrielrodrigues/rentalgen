@@ -1,12 +1,12 @@
 {{define "bordereau"}}
-<main class="flex flex-col items-center w-screen h-screen px-8 text-md">
+<main class="page flex flex-col items-center px-8">
 	<header class="flex flex-col items-center gap-4">
 		<h1 class="font-bold uppercase">recibo borderô</h1>
 		<span class="italic">{{.PropertyAddress}}</span>
 
 		<div class="text-justify leading-none">
 			<span>
-				Recebi em {{.DueDay}} de {{.ExpirationMonth}} de {{.ExpirationYear}},
+				Recebi em {{.ReceiptDay}} de {{.ExpirationMonth}} de {{.ExpirationYear}},
 				recibo borderô de prestação de contas referente ao pagamento do aluguel
 				do mês {{.ReferenceMonth}}/{{.ReferenceYear}} com vencimento em
 				{{.ExpirationMonth}}/{{.ExpirationYear}} de
@@ -92,7 +92,7 @@
 
 	<footer class="flex flex-col items-center mt-6">
 		<p>
-			{{.City}}/SP, {{.DueDay}} de {{.ExpirationMonth}} de {{.ExpirationYear}}.
+			{{.City}}/SP, {{.ReceiptDay}} de {{.ExpirationMonth}} de {{.ExpirationYear}}.
 		</p>
 
 		<div class="border-b max-w-sm w-full mx-auto mt-8"></div>

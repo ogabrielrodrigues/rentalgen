@@ -1,23 +1,20 @@
-{{define "root"}}
-<html>
+{{define "root"}}<!doctype html>
+<html lang="pt-BR">
   <head>
-    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
-    <style type="text/tailwindcss">
-      @theme {
-        --font-sans: "Aptos Narrow", "Aptos", "Segoe UI", sans-serif;
-      }
-    </style>
+    <meta charset="utf-8" />
+    <title>Recibos</title>
+    <link rel="stylesheet" href="/styles.css" />
   </head>
 
-  <body class="w-screen overflow-x-hidden">
+  <body>
     {{range .Rentals}}
-      {{if eq .Skip nil}}
-        <div class="min-h-screen w-screen max-h-[400vh]">
-          {{if eq .OnlyVoucher nil}}
+      {{if not .Skip}}
+        <div class="rental">
+          {{if .OnlyVoucher}}
+            {{template "voucher" .}} {{template "voucher" .}}
+          {{else}}
             {{template "voucher" .}} {{template "bordereau" .}}
             {{template "bordereau" .}} {{template "voucher" .}}
-          {{else}}
-            {{template "voucher" .}} {{template "voucher" .}}
           {{end}}
         </div>
       {{end}}

@@ -4,60 +4,67 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+	"strconv"
+	"time"
 
-	"rentalgen/config"
-	"rentalgen/logger"
 	"rentalgen/types"
 )
 
-func Parse(flags *config.Flags) (*types.Tmpl, error) {
-	file, err := os.Open(flags.FilePath)
+func Parse(filePath string) (*types.Tmpl, error) {
+	file, err := os.Open(filePath)
 	if err != nil {
-		return nil, fmt.Errorf("✗ erro ao abrir arquivo de alugueres.")
+		return nil, fmt.Errorf("✗ erro ao abrir arquivo de alugueres: %w", err)
 	}
 	defer file.Close()
 
 	var tmplData types.Tmpl
-	err = json.NewDecoder(file).Decode(&tmplData)
+	decoder := json.NewDecoder(file)
+	decoder.DisallowUnknownFields()
+
+	err = decoder.Decode(&tmplData)
 	if err != nil {
-		return nil, fmt.Errorf("✗ erro ao processar arquivo.")
+		return nil, fmt.Errorf("✗ erro ao processar arquivo: %w", err)
 	}
 
-	rentals := []types.Rental{}
-	for _, rental := range tmplData.Rentals {
-		rental.ReferenceMonth = &tmplData.ReferenceDate.Month
-		rental.ReferenceYear = &tmplData.ReferenceDate.Year
-		rental.ExpirationMonth = &tmplData.ExpirationDate.Month
-		rental.ExpirationYear = &tmplData.ExpirationDate.Year
+	err = validate(&tmplData)
+	if err != nil {
+		return nil, fmt.Errorf("✗ arquivo inválido:\n%w", err)
+	}
+
+	for i := range tmplData.Rentals {
+		rental := &tmplData.Rentals[i]
+
+		rental.ReferenceMonth = tmplData.ReferenceDate.Month
+		rental.ReferenceYear = tmplData.ReferenceDate.Year
+		rental.ExpirationMonth = tmplData.ExpirationDate.Month
+		rental.ExpirationYear = tmplData.ExpirationDate.Year
+		rental.ReceiptDay = receiptDay(rental.DueDay, tmplData.ExpirationDate)
 
 		rental.Owner.Qualification = rental.Owner.GenerateQualification()
 
-		tenants := []types.Person{}
-		for _, tenant := range rental.Tenants {
-			tenant.Qualification = tenant.GenerateQualification()
-
-			tenants = append(tenants, tenant)
+		for j := range rental.Tenants {
+			rental.Tenants[j].Qualification = rental.Tenants[j].GenerateQualification()
 		}
 
-		guarantors := []types.Person{}
-		if rental.Guarantors != nil {
-			for _, guarantor := range *rental.Guarantors {
-				guarantor.Qualification = guarantor.GenerateQualification()
-
-				guarantors = append(guarantors, guarantor)
-			}
+		for j := range rental.Guarantors {
+			rental.Guarantors[j].Qualification = rental.Guarantors[j].GenerateQualification()
 		}
-
-		rental.Tenants = tenants
-		rental.Guarantors = &guarantors
-		rentals = append(rentals, rental)
 	}
 
-	logger.Log(logger.ColorGreen, "✓ arquivo de alugueres selecionado: ")
-	logger.Logln(logger.ColorDefault, flags.FilePath)
-	logger.Logln(logger.ColorDefault, "✓ para realizar a impressão dos recibos, acesse http://localhost:8080\n")
-	logger.Logln(logger.ColorDefault, "Para encerrar, pressione Ctrl + C")
-
-	tmplData.Rentals = rentals
 	return &tmplData, nil
+}
+
+// receiptDay limita o dia de vencimento ao último dia do mês, evitando datas
+// impossíveis como "31 de Fevereiro".
+func receiptDay(dueDay string, date types.MonthYear) string {
+	day, _ := strconv.Atoi(dueDay)
+	year, _ := strconv.Atoi(date.Year)
+	month, _ := parseMonth(date.Month)
+
+	lastDay := time.Date(year, month+1, 0, 0, 0, 0, 0, time.UTC).Day()
+	if day > lastDay {
+		return strconv.Itoa(lastDay)
+	}
+
+	return dueDay
 }

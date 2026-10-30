@@ -2,6 +2,7 @@ package logger
 
 import (
 	"fmt"
+	"os"
 )
 
 type Color string
@@ -21,4 +22,8 @@ func Log(color Color, msg string) {
 
 func Logln(color Color, msg string) {
 	fmt.Println(string(color)+msg, string(ColorReset))
+}
+
+func Errorln(msg string) {
+	fmt.Fprintln(os.Stderr, string(ColorRed)+msg, string(ColorReset))
 }

@@ -1,1 +1,5 @@
 *.json
+!exemplo.json
+node_modules/
+rentalgen.exe
+rentalgen

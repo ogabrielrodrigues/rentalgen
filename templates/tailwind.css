@@ -1,0 +1,23 @@
+@import "tailwindcss" source(none);
+
+@source "./*.html";
+
+@theme {
+  --font-sans: "Aptos Narrow", "Aptos", "Segoe UI", sans-serif;
+}
+
+@page {
+  size: A4;
+  margin: 10mm;
+}
+
+.page + .page,
+.rental + .rental {
+  break-before: page;
+}
+
+@media screen {
+  .page {
+    min-height: 100vh;
+  }
+}
